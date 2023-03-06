@@ -9,13 +9,50 @@ import XCTest
 @testable import TDDUnitTesting
 
 final class TDDUnitTestingTests: XCTestCase {
+    
+    var sut: ViewController!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        sut = ViewController()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+
+//    override func setUpWithError() throws {
+//        // Put setup code here. This method is called before the invocation of each test method in the class.
+//    }
+//
+//    override func tearDownWithError() throws {
+//        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//    }
+    
+    func testTwoNumberAddition() {
+        
+        sut.adding(numberOne: -5, numberTwo: 5)
+
+        let number = sut.number
+
+        XCTAssert(number == 0, "число 1 должно отниматься от числа 2")
+    }
+
+    func testMultiplicationOfTwoNumbers() {
+        sut.multiplication(numberOne: 5, numberTwo: 5)
+        
+        let result = sut.number
+        
+        XCTAssert(result == 25, "число 1 должно помножиться на число 2")
+    }
+    
+    func testDivisionOfTwoNumbers() {
+        sut.dividing(numberOne: 2, numberTwo: 4)
+
+        let number = sut.number
+
+        XCTAssert(number == 0, "На 0 делить нельзя")
     }
 
     func testExample() throws {
